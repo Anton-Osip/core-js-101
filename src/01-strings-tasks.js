@@ -209,9 +209,9 @@ function getRectangleString(width, height) {
   const w = width - 2;
   const h = height - 2;
 
-  const top = '┌' + '─'.repeat(w) + '┐\n';
-  const middle = ('│' + ' '.repeat(w) + '│\n').repeat(h);
-  const bottom = '└' + '─'.repeat(w) + '┘\n';
+  const top = `┌${'─'.repeat(w)}┐\n`;
+  const middle = (`│${' '.repeat(w)}│\n`).repeat(h);
+  const bottom = `└${'─'.repeat(w)}┘\n`;
 
   return top + middle + bottom;
 }

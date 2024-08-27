@@ -559,8 +559,18 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  return array.reduce((previous, current) => {
+    const key = keySelector(current);
+    const value = valueSelector(current);
+
+    const arr = previous.get(key) || [];
+    arr.push(value);
+
+    previous.set(key, arr);
+
+    return previous;
+  }, new Map());
 }
 
 
@@ -569,7 +579,7 @@ function group(/* array, keySelector, valueSelector */) {
  * and flattens the resulting sequences into one array.
  *
  * @param {array} arr
- * @param {Function} childrenSelector, a transform function to apply to each element
+ * @param {Function} childrenSelector , a transform function to apply to each element
  *                                     that returns an array of children
  * @return {array}
  *
